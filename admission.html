@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Admission</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>School Admission</h1>
+    </header>
+    <div class="container">
+        <h2>Admission Form</h2>
+        <form action="#" id="admissionForm" method="post">
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="grade">Grade Applying For:</label>
+            <select id="grade" name="grade" required>
+                <option value="kindergarten">Kindergarten</option>
+                <option value="elementary">Elementary School</option>
+                <option value="middle">Middle School</option>
+                <option value="high">High School</option>
+            </select>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('admissionForm');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the form from submitting by default
+
+            // Validation logic
+            const fullName = document.getElementById('full_name').value;
+            const email = document.getElementById('email').value;
+            const dob = document.getElementById('dob').value;
+            const grade = document.getElementById('grade').value;
+
+            // Simple validation example (you can add more complex checks)
+            if (fullName.trim() === '') {
+                alert('Please enter your full name.');
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            if (!isValidDate(dob)) {
+                alert('Please enter a valid date of birth.');
+                return;
+            }
+
+            // If all validations pass, you can submit the form
+            form.submit();
+        });
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidDate(date) {
+            const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+            return dateRegex.test(date);
+        }
+    </script>
+</body>
+</html>
